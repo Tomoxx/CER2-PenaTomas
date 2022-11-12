@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+{%load static%}
+{%block title%}
+Inicio
+{%endblock%}
+
+{%block content%}
+{% comment %} <img src="{% static 'core/img/images.png' %}" alt="My image"> {% endcomment %}
+<h1>Correspondencia</h1>
+<ul>
+{% for correspondencia in object_list %}
+    <li>{{ correspondencia.fechaRecibida|date }} - {{ correspondencia.number }}</li>
+{% empty %}
+    <li>No hay correspondencia.</li>
+{% endfor %}
+</ul>
+{%endblock %}
