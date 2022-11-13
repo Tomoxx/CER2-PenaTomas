@@ -15,9 +15,9 @@ class Correspondencia(models.Model):
     fechaRecibida = models.DateTimeField((""), auto_now=False, auto_now_add=False, default=now)
     conserje = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="Conserjes", limit_choices_to={'groups__name':"Conserjes"})
     remitente = models.CharField(max_length=50)
-    NORECIBIDO = 'No Recibido'
-    RECIBIDO = 'Recibido'
-    estados = [(NORECIBIDO, 'No recibido'), (RECIBIDO, 'Recibido')] 
+    NORECIBIDO = 'NR'
+    RECIBIDO = 'R'
+    estados = [(NORECIBIDO, 'No Recibido'), (RECIBIDO, 'Recibido')] 
     estado = models.CharField(max_length=15, choices=estados, default=NORECIBIDO,)
     destinatario = models.CharField(max_length=50)
     residencia = models.ForeignKey('Residencia', on_delete=models.SET_NULL, null=True)
