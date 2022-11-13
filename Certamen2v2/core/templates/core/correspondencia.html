@@ -6,4 +6,39 @@ Inicio
 
 {%block content%}
     Esta pagina muestra la correspondencia
+    <div>
+    <form class="d-flex" method="get">
+        <input class="form-control me-2" type="search" placeholder="N° Residencia" name="search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    </div>
+    <br><br>
+    <div class="col-md-8">
+        <table class="table table-bordered border-primary" >
+            <thead>
+                <tr>
+                    <th scope="col">Residencia N°</th>
+                    <th scope="col">Fecha recepción</th>
+                    <th scope="col">Conserje</th>
+                    <th scope="col">Remitente</th>
+                    <th scope="col">Destinatario</th>
+                    <th scope="col">Estado</th>
+                    
+                </tr>
+            </thead>
+        {%for i in correspondencia%}
+            <tbody>
+                <tr>
+                    <td scope"col">{{i.residencia}} </td>
+                    <td scope"col">{{i.fechaRecibida}} </td>
+                    <td scope"col">{{i.conserje}} </td>
+                    <td scope"col">{{i.remitente}} </td>
+                    <td scope"col">{{i.destinatario}} </td>
+                    <td scope"col">{{i.estado}} </td>
+        {% endfor %}
+
+        </tbody>
+
+        </table>
+    </div>
 {%endblock %}

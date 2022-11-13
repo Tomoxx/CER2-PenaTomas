@@ -22,5 +22,4 @@ urlpatterns = [
     path('',views.inicio,name="inicio"),
     path('residencias/',views.residencias,name="residencias"),
     path('correspondencia/',views.correspondencia,name="correspondencia"),
-    path('',views.CorrespondenciaList.as_view(),name="correspondencia-list"),
 ]

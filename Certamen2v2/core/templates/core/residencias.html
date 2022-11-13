@@ -6,4 +6,31 @@ Inicio
 
 {%block content%}
     Esta pagina muestra las residencias
+    <form class="d-flex" method="get">
+        <input class="form-control me-2" type="search" placeholder="N° Residencia" name="search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <br><br>
+    <div class="col-md-8">
+        <table class="table table-bordered border-primary" >
+        <thead>
+            <tr>
+            <th scope="col">Residencia N°</th>
+            <th scope="col">Dueño</th>
+            <th scope="col">Telefono</th>
+
+            </tr>
+        </thead>
+        {%for i in residencia%}
+        <tbody>
+            <tr>
+            <td scope"col">{{i.number}} </td>
+            <td scope"col">{{i.dueno}} </td>
+            <td scope"col">{{i.telefono}} </td>
+        {% endfor %}
+
+        </tbody>
+
+        </table>
+    </div>
 {%endblock %}

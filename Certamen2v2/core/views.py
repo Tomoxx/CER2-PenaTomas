@@ -1,24 +1,30 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic.list import ListView
-from django.utils import timezone
-from core.models import Correspondencia
+from .models import Correspondencia
+from .models import Residencia
 
 # Create your views here.
 def inicio(request):
     return render(request,'core/inicio.html')
 
 def residencias(request):
-    return render(request,'core/residencias.html')
+    residencia = Residencia.objects.filter().order_by("number")
+    search = (request.GET.get("search"))
+    
+    if search:
+        residencia = Residencia.objects.filter(number = search).distinct()
+    
+    if search == "":
+        residencia = Residencia.objects.filter().order_by("number")
+    return render(request,'core/residencias.html', {'residencia': residencia})
 
 def correspondencia(request):
-    return render(request,'core/correspondencia.html')
-
-class CorrespondenciaList(ListView):
-    model = Correspondencia
-    paginate_by: 25
+    correspondencia = Correspondencia.objects.filter().order_by("residencia")
+    search = (request.GET.get("search"))
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['now'] = timezone.now()
-        return context
+    if search:
+        correspondencia = Correspondencia.objects.filter(residencia = search).distinct()
+    
+    if search == "":
+        correspondencia = Correspondencia.objects.filter().order_by("residencia")
+    return render(request,'core/correspondencia.html', {'correspondencia': correspondencia, 'search': search})
