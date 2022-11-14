@@ -1,23 +1,26 @@
-{% extends 'core/base.html' %}
+{% extends 'core/inicio.html' %}
 {%load static%}
 {%block title%}
-Inicio
+Correspondencia
 {%endblock%}
 
 {%block content%}
-    Esta pagina muestra la correspondencia
-    <div>
-    <form class="d-flex" method="get">
-        <input class="form-control me-2" type="search" placeholder="N° Residencia" name="search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+    <br>
+    <div class="search">
+    <form method="get">
+        <div class="mb-3">
+        <label for="numeroResidencia" class="form-label">Numero de Residencia</label>
+        <input type="search" class="form-control searchInp" id="numeroResidencia" name="search">
+        </div>
+        <button type="submit" class="btn btn-primary">Filtrar</button>
     </form>
     </div>
-    <br><br>
+    <br>
     <div class="col-md-8">
         <table class="table table-bordered border-primary" >
             <thead>
                 <tr>
-                    <th scope="col">Residencia N°</th>
+                    <th scope="col">Numero de Residencia</th> 
                     <th scope="col">Fecha recepción</th>
                     <th scope="col">Conserje</th>
                     <th scope="col">Remitente</th>
@@ -36,9 +39,7 @@ Inicio
                     <td scope"col">{{i.destinatario}} </td>
                     <td scope"col">{{i.estado}} </td>
         {% endfor %}
-
-        </tbody>
-
+            </tbody>
         </table>
     </div>
 {%endblock %}

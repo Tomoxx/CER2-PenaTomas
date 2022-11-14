@@ -1,24 +1,28 @@
-{% extends 'core/base.html' %}
+{% extends 'core/correspondencia.html' %}
 {%load static%}
 {%block title%}
-Inicio
+Residencia
 {%endblock%}
 
 {%block content%}
-    Esta pagina muestra las residencias
-    <form class="d-flex" method="get">
-        <input class="form-control me-2" type="search" placeholder="N° Residencia" name="search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+    <br>
+    <div class="search">
+    <form method="get">
+    <div class="mb-3">
+    <label for="numeroResidencia" class="form-label">Numero de Residencia</label>
+    <input type="search" class="form-control searchInp" id="numeroResidencia" name="search">
+    </div>
+    <button type="submit" class="btn btn-primary">Filtrar</button>
     </form>
-    <br><br>
+    </div>
+    <br>
     <div class="col-md-8">
         <table class="table table-bordered border-primary" >
         <thead>
             <tr>
-            <th scope="col">Residencia N°</th>
+            <th scope="col">Numero de Residencia</th>
             <th scope="col">Dueño</th>
             <th scope="col">Telefono</th>
-
             </tr>
         </thead>
         {%for i in residencia%}
@@ -28,9 +32,7 @@ Inicio
             <td scope"col">{{i.dueno}} </td>
             <td scope"col">{{i.telefono}} </td>
         {% endfor %}
-
         </tbody>
-
         </table>
     </div>
 {%endblock %}
